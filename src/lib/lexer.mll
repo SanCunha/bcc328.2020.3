@@ -57,6 +57,7 @@ rule token = parse
   | "&&"              { AND }
   | "||"              { OR }
   | ":="              { ASSIGN }
+  | "?"               { IFT }
   | '('               { LPAREN }
   | ')'               { RPAREN }
   | ','               { COMMA }

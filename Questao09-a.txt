@@ -1,0 +1,3 @@
+Questão 09 - A
+
+Avalia se o tipo do primeiro paramêtro é uma expressão booleana, em caso de erro é lançada uma exceção. Em seguida avalia-se se os próximos dois paramêtros possuem o mesmo tipo, caso os paramêtros não possuam o mesmo tipo é lançada uma exceção. Se ambos os paramêtros possuírem o mesmo tipo é definido o tipo da expressão.

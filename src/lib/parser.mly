@@ -28,6 +28,7 @@
 %token                 AND
 %token                 OR
 %token                 ASSIGN
+%token                 IFT 
 %token                 LPAREN
 %token                 RPAREN
 %token                 COMMA
@@ -89,6 +90,7 @@ exp:
 | x=var                                        {$loc % VarExp x}
 | LET d=list(dec) IN e=exp                     {$loc % LetExp (d, e)}
 | x=var ASSIGN e=exp                           {$loc % AssignExp (x, e)}
+| x=exp IFT y=exp COLON z=exp                  {$loc % IftExp (x, y, z)}
 
 (* semicolon separated sequence of expressions *)
 exp_seq:

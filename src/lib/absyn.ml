@@ -28,6 +28,7 @@ and exp_basic =
   | VarExp        of lvar
   | LetExp        of ldec list * lexp
   | AssignExp     of lvar * lexp
+  | IftExp        of (lexp * lexp * lexp)
   [@@deriving show]
 
 and binary_op =

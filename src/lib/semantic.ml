@@ -129,7 +129,16 @@ let rec check_exp env (pos, (exp, tref)) =
   | A.IfExp (test, e1, e2) -> set tref (check_if_exp env pos test e1 e2)
   | A.WhileExp (test, body) -> set tref (check_while_exp env pos test body)
   | A.BreakExp -> set tref (check_break_exp env pos)
+  | A.IftExp (x, y, z) -> check_ift env pos (x, y, z) tref
   | _ -> Error.fatal "unimplemented"
+
+and check_ift env pos (x, y, z) tref =
+  let aux_type = check_exp env (pos, (x, tref)) in
+  match aux_type with
+  | T.BOOL -> let aux_expressao = (check_exp env y) in
+              compatible aux_expressao (check_exp env z) pos;
+              set tref aux_expressao
+  | _ -> Error.fatal "Expected Boolean"
 
 and check_let_exp env _pos decs body =
   let env' = List.fold_left check_dec env decs in
